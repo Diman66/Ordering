@@ -1,37 +1,60 @@
-import { nanoid } from 'nanoid'
+import { nanoid } from 'nanoid';
+import Orders from './js/orders.js'
 import './index.css';
 
+let orders
 
-
-let entries = [];
-window.storage.read().then((res)=> {
-    entries = res
-})
+function orderListDom (ordersList) {
+    let entriesList = document.querySelector('.entries__list');
+    entriesList.innerHTML = "";
+    let ul = document.createElement('ul');
+    console.log(ordersList)
+    entriesList.append(ul)
+    for (let item of ordersList.data) {
+        let li = document.createElement('li');
+        li.setAttribute('data-id', item.id);
+        li.innerHTML = item.id + " " + item.name;
+        li.addEventListener('click', () => {
+            orders.edit(item.id)
+        })
+        let span = document.createElement('span')
+        span.innerHTML = "удалить";
+        span.addEventListener('click', async () => {
+            await orders.delete(item.id);
+            await orders.save(orders);
+            await orders.getOrders();
+            await orderListDom(orders);
+        })
+        ul.append(li);
+        ul.append(span);
+    }
+}
 
 window.addEventListener('DOMContentLoaded', () => {
-    let btn = document.querySelector('#btnAdd');
-    let inpt = document.querySelector('input');
-   
-    btn.addEventListener('click', () => {
+    
+    window.storage.entries((e, data) => {
+        orders = new Orders(data);
+        orderListDom(orders)
+    })
+
+    let btn = document.querySelector('.entries__btnAdd');
+    
+    btn.addEventListener('click', async () => {
         let entry = {
             id: nanoid(), //=> "V1StGXR8_Z5jdHi6B-myT"
-            name: inpt.value
+            name: "Выписка"
         }
-        entries.push(entry);
-        window.storage.save(JSON.stringify(entries));
+        await orders.add()
+        // entries.push(entry);
+        await orders.save(orders)
+        await orders.getOrders();
+        console.log("событие")
+        await orderListDom(orders);
     })
 
 
-    let btnRead = document.querySelector('#btnRead');
-    let view = document.querySelector('#view');
-    btnRead.addEventListener('click', () => {
-        view.innerHTML = "";
-        for (let item of entries) {
-            let div = document.createElement('div');
-            div.innerHTML = item.name;
-            view.append(div);
-        }
-    })
+   
+    
 })
 
 console.log('👋 This message is being logged by "renderer.js", included via webpack');

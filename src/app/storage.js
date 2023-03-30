@@ -4,7 +4,7 @@ import * as fs from "fs";
 
 export default class Storage {
     constructor () {
-        this.entries = []
+        // this.entries = []
     }
 
     get () {
@@ -20,8 +20,8 @@ export default class Storage {
     }
 
     read (file) {
-        let result = JSON.parse(fs.readFileSync(file, { encoding: "utf-8" }));
-        this.entries = result;
+        let result = fs.readFileSync(file, { encoding: "utf-8" });
+        // this.entries = result;
         return result
     }
 }

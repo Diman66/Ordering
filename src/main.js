@@ -12,7 +12,7 @@ let storage = new Storage;
 
 
 const createWindow = () => {
-  // Create the browser window.
+    // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
@@ -30,16 +30,51 @@ const createWindow = () => {
   ipcMain.on ('save', (e, data) => {
     storage.save('data.txt', data)
   });
-  ipcMain.handle ('read', () => {
-    let result = storage.read("data.txt");
+
+  mainWindow.webContents.on('did-finish-load', () => {
+      mainWindow.webContents.send('entries', storage.read("data.txt"));
+      // ipcMain.handleOnce ('read', async () => {
+      //   let result = await storage.read("data.txt");
+      //   console.log(result)
+      //   return result;
+      // }); 
+  });
+  
+  ipcMain.handle ('read', async () => {
+    let result = await storage.read("data.txt");
+    console.log(result)
     return result;
-  }) 
+  }); 
+
+  ipcMain.on ('openOrderWindow', () => {
+    createOrderWindow()
+  });
 };
 
+
+
+const createOrderWindow = () => {
+  // Create the browser window.
+  const orderWindow = new BrowserWindow({
+    width: 800,
+    height: 600,
+    webPreferences: {
+      preload: ORDER_WINDOW_PRELOAD_WEBPACK_ENTRY,
+    }
+  });
+
+  // and load the index.html of the app.
+  orderWindow.loadURL(ORDER_WINDOW_WEBPACK_ENTRY);
+
+  // Open the DevTools.
+  orderWindow.webContents.openDevTools();
+
+
+};
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', createWindow);
+ app.on('ready', createWindow);
 
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
