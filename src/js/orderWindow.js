@@ -6,20 +6,15 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
     for (let i = 0; i < tds.length; i++) {
         tds[i].addEventListener('click', function func() {
-            let input = document.createElement('div');
-            input.setAttribute('contenteditable', "true");
-            input.innerHTML = this.innerHTML;
-            this.innerHTML = '';
-            this.append(input);
-            input.focus();
-            
-            let td = this;
-            input.addEventListener('blur', function() {
-                td.innerHTML = this.innerHTML;
-                td.addEventListener('click', func);
-            });
-            
-            this.removeEventListener('click', func);
+            this.firstElementChild.setAttribute('contenteditable', 'true');
+            this.firstElementChild.focus();
+            this.firstElementChild.addEventListener('blur', function() {
+                    console.log(this.innerHTML, this.nextElementSibling.value);
+                    this.nextElementSibling.value = this.innerHTML;
+                    console.log(this.innerHTML, this.nextElementSibling.value);
+                    
+                });
+            this.removeEventListener('click', func)
         });
     }
 
@@ -42,13 +37,43 @@ document.addEventListener('DOMContentLoaded', ()=>{
             div.innerHTML = item.grbscode + ' ' + item.rzpr + ' ' + item.kcsr + ' ' + item.kvr;
             div.addEventListener('click', (e) => {
                 console.log(e)
-                tdRkbk.innerHTML = e.target.innerHTML
-                modalWindow.style.display = "none"
+                tdRkbk.innerHTML = e.target.innerHTML;
+                modalWindow.remove();
+                //modalWindow.style.display = "none"
             })
             modalWindow.append(div);
         }
        
         document.body.append(modalWindow);
     }
+
+    //////////////////////////////////////////////
+
+    // let btnSave = document.querySelector('#btnSave');
+    // btnSave.addEventListener('click', () => {
+    //     //let tableReq = document.querySelector('.requisites table');
+    //     const nodeList = document.querySelectorAll(".requisites table tbody tr");
+    //     nodeList.forEach((node) => {
+    //         const order = {};
+    //         order.requisites = {};
+    //         order.requisites.number = node.cells[0].innerHTML;
+    //         order.requisites.date = node.cells[1].innerHTML;
+    //         order.requisites.type = node.cells[2].innerHTML;
+    //         order.requisites.name = node.cells[3].innerHTML;
+    //         console.log(order);
+    //     })
+    //     //const rowsTableReq = Array.from(nodeList);
+    //     //console.log(rowsTableReq); 
+    // })
+
+/////////////////////////////////////////////////////////
+
+    formOrder.addEventListener('submit', (e) => {
+        e.preventDefault();
+        let formData = new FormData(formOrder);
+        for(let [name, value] of formData) {
+            console.log(`${name} = ${value}`); 
+        }
+    })
 
 })

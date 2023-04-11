@@ -35,14 +35,6 @@ module.exports = {
               preload: {
                 js: './src/preload.js',
               },
-            },
-            {
-              html: './src/view/order.html',
-              js: './src/js/orderWindow.js',
-              name: 'order_window',
-              preload: {
-                js: './src/preload.js',
-              },
             }
           ],
         },

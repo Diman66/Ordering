@@ -1,0 +1,43 @@
+order {
+    id,
+    title,
+    requisites {
+        number,
+        type,
+        name,
+        date
+    }
+    expenditures [
+        {
+            name,
+            line,
+            sum,
+            sum1,
+            sum2
+        }
+    ]
+    income [
+        {
+            dkbk,
+            name,
+            sum,
+            sum1,
+            sum2
+        }
+    ]
+    expense [
+        dateSbr,
+        nameFo,
+        nameDol,
+        fio,
+        expLine [
+            {
+                rkbk,
+                name,
+                sum,
+                sum1,
+                sum2
+            }
+        ]
+    ]
+}

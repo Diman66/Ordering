@@ -46,31 +46,31 @@ const createWindow = () => {
     return result;
   }); 
 
-  ipcMain.on ('openOrderWindow', () => {
-    createOrderWindow()
-  });
+  // ipcMain.on ('openOrderWindow', () => {
+  //   createOrderWindow()
+  // });
 };
 
 
 
-const createOrderWindow = () => {
-  // Create the browser window.
-  const orderWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
-    webPreferences: {
-      preload: ORDER_WINDOW_PRELOAD_WEBPACK_ENTRY,
-    }
-  });
+// const createOrderWindow = () => {
+//   // Create the browser window.
+//   const orderWindow = new BrowserWindow({
+//     width: 800,
+//     height: 600,
+//     webPreferences: {
+//       preload: ORDER_WINDOW_PRELOAD_WEBPACK_ENTRY,
+//     }
+//   });
 
-  // and load the index.html of the app.
-  orderWindow.loadURL(ORDER_WINDOW_WEBPACK_ENTRY);
+//   // and load the index.html of the app.
+//   orderWindow.loadURL(ORDER_WINDOW_WEBPACK_ENTRY);
 
-  // Open the DevTools.
-  orderWindow.webContents.openDevTools();
+//   // Open the DevTools.
+//   orderWindow.webContents.openDevTools();
 
 
-};
+// };
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.

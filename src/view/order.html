@@ -12,6 +12,9 @@
     
 </head>
 <body>
+    <form action="" id="formOrder">
+
+    </form>
     <section class="container header">
         <header>
             Выписка
@@ -42,10 +45,22 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>180</td>
-                    <td>08.12.2022</td>
-                    <td>решение </td>
-                    <td>Решение Думы   Камышловского городского округа  «О бюджете Камышловского городского округа на 2023 год и плановый период 2024 и 2025 годов»</td>
+                    <td>
+                        <div>180</div>
+                        <input form="formOrder" type="text" style="display:none" name="requisites-number" value="">
+                    </td>
+                    <td>
+                        <div>08.12.2022</div>
+                        <input form="formOrder" type="text" style="display:none" name="requisites-date" value="">
+                    </td>
+                    <td>
+                        <div>решение</div>
+                        <input form="formOrder" type="text" style="display:none" name="requisites-type" value="">
+                    </td>
+                    <td>
+                        <div>Решение Думы   Камышловского городского округа  «О бюджете Камышловского городского округа на 2023 год и плановый период 2024 и 2025 годов»</div>
+                        <input form="formOrder" type="text" style="display:none" name="requisites-name" value="">
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -65,11 +80,20 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>Муниципальная программа «Развитие образования, культуры, спорта и молодежной политики в Камышловском городском округе до 2027 года», Подпрограмма "Развитие образования в сфере культуры в Камышловском городском округе", Оснащение муниципальных организаций дополнительного образования (детские школы искусств) музыкальными инструментами, оборудованием и учебными материалами на условиях софинансирования из федерального бюджета</td>
-                    <td>Приложение, 4 строка, 495 </td>
-                    <td>Сумма на 2023 год
+                    <td>
+                        <div>Муниципальная программа «Развитие образования, культуры, спорта и молодежной политики в Камышловском городском округе до 2027 года», Подпрограмма "Развитие образования в сфере культуры в Камышловском городском округе", Оснащение муниципальных организаций дополнительного образования (детские школы искусств) музыкальными инструментами, оборудованием и учебными материалами на условиях софинансирования из федерального бюджета</div>
+                        <input form="formOrder" type="text" style="display:none" name="expenditure-name" value="">
+                    </td>
+                    <td>
+                        <div>Приложение, 4 строка, 495 </div>
+                        <input form="formOrder" type="text" style="display:none" name="expenditure-line" value="">
+                    </td>
+                    <td>
+                        <div>Сумма на 2023 год
     
-                        5 969 000,00</td>
+                        5 969 000,00</div>
+                        <input form="formOrder" type="text" style="display:none" name="expenditure-sum" value="">
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -87,10 +111,19 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>90620225519040000150</td>
-                    <td>Субсидии бюджетам городских округов на поддержку отрасли культуры</td>
-                    <td>Сумма на 2023 год  (рублей)
-                        5 313 000,00</td>
+                    <td>
+                        <div>90620225519040000150</div>
+                        <input form="formOrder" type="text" style="display:none" name="income-dkbk" value="">
+                    </td>
+                    <td>
+                        <div>Субсидии бюджетам городских округов на поддержку отрасли культуры</div>
+                        <input form="formOrder" type="text" style="display:none" name="income-name" value="">
+                    </td>
+                    <td>
+                        <div>Сумма на 2023 год  (рублей)
+                        5 313 000,00</div>
+                        <input form="formOrder" type="text" style="display:none" name="income-sum" value="">
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -126,14 +159,25 @@
             </thead>
             <tbody>
                 <tr>
-                    <td id="td-rkbk">9060703025A155192622</td>
-                    <td>Муниципальная программа «Развитие образования, культуры, спорта и молодежной политики в Камышловском городском округе до 2027 года», Подпрограмма "Развитие образования в сфере культуры в Камышловском городском округе", Оснащение муниципальных организаций дополнительного образования (детские школы искусств) музыкальными инструментами, оборудованием и учебными материалами на условиях софинансирования из федерального бюджета</td>
-                    <td>Сумма на 2023 год (рублей)
+                    <td>
+                        <div>9060703025A155192622</div>
+                        <input form="formOrder" type="text" style="display:none" name="expense-rkbk" value="">
+                    </td>
+                    <td>
+                        <div>Муниципальная программа «Развитие образования, культуры, спорта и молодежной политики в Камышловском городском округе до 2027 года», Подпрограмма "Развитие образования в сфере культуры в Камышловском городском округе", Оснащение муниципальных организаций дополнительного образования (детские школы искусств) музыкальными инструментами, оборудованием и учебными материалами на условиях софинансирования из федерального бюджета</div>
+                        <input form="formOrder" type="text" style="display:none" name="expense-name" value="">
+                    </td>
+                    <td>
+                        <div>Сумма на 2023 год (рублей)
     
-                        5 969 000,00</td><button id="btn-rkbk">...выбрать кбк</button>
+                        5 969 000,00</div>
+                        <input form="formOrder" type="text" style="display:none" name="expense-sum" value="">
+                    </td>
+                    <button id="btn-rkbk">...выбрать кбк</button>
                 </tr>
             </tbody>
         </table>
     </section>
+    <input form="formOrder" type="submit" id="btnSave" value="Сохранить">
 </body>
 </html>
