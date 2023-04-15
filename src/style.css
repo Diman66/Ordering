@@ -1,8 +1,16 @@
+html {
+	margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+	height: 100%;
+}
+
 body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 	position: relative;
+	height: 100%;
 }
 
 .container {
@@ -13,6 +21,7 @@ body {
 
 h1 {
     text-align: center;
+	border: 1px solid #ddd;
 }
 
 h2 {
@@ -85,5 +94,23 @@ h2 {
 #modal {
 	display: none;
 	position: absolute;
-	left: 10px; right: 10px; top: 10px; bottom: 10px;
+	left: 10px; 
+	right: 10px; 
+	top: 10px; 
+	background-color: #fff;
+}
+
+ul li {
+	margin: 5px auto;
+	cursor: pointer;
+	border: 1px solid ;
+	border-radius: 5px;
+	display: flex;
+	justify-content: space-between;
+	max-width: 800px;
+}
+
+ul li span {
+	display: block;
+	width: 100%;
 }
