@@ -16,7 +16,7 @@ export default class Storage {
             file, 
             data,
             { encoding: "utf-8" }
-          );
+        );
     }
 
     read (file) {

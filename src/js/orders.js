@@ -1,4 +1,5 @@
-import { nanoid } from 'nanoid'
+import { nanoid } from 'nanoid';
+import Modal from './modal'
 
 export default class Orders {
     constructor (data) {
@@ -13,17 +14,55 @@ export default class Orders {
     }
 
     add () {
-        this.data.push(new Order)
+        return new Promise((resolve, reject) => {
+            let modal = new Modal;
+            let promise = modal.create(new Order);
+            promise.then(
+                (order) => {
+                    console.log('сохранено'); 
+                    console.log(order);
+                    this.data.push(order)
+                    modal = null;
+                    resolve(order)
+                }
+                , 
+                () => {
+                    modal = null;
+                    reject('отмена');
+                }
+            )
+        })
+        
+        //this.data.push(new Order)
     }
 
-    edit (id) {
-        let order = this.data.find(order => id == order.id)
-        console.log('редактирование записи ', order);
-        window.orderWindow.open();
+    edit (item, index) {
+        return new Promise((resolve, reject) => {
+            let modal = new Modal;
+            let promise = modal.create(item);
+            promise.then(
+                (order) => {
+                    console.log('сохранено'); 
+                    console.log(order);
+                    this.data.splice(index, 1, order);
+                    modal = null;
+                    resolve()
+                }
+                , 
+                () => {
+                    modal = null;
+                    reject('отмена');
+                }
+            )
+        })
     }
 
     save (orders) {
-        window.storage.save(JSON.stringify(orders));
+        return new Promise (async (resolve, reject) => {
+            window.storage.save(JSON.stringify(orders));
+            resolve('данные отправлены на запись')
+        })
+        
     }
 
     delete (id) {
@@ -39,6 +78,6 @@ export default class Orders {
 class Order {
     constructor () {
         this.id = nanoid();
-        this.name = "выписка"
+        
     }
 }
